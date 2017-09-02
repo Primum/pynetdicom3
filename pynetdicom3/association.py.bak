@@ -30,8 +30,7 @@ from pynetdicom3.sop_class import uid_to_sop_class, VerificationServiceClass, \
                          PatientStudyOnlyQueryRetrieveInformationModelMove, \
                          PatientRootQueryRetrieveInformationModelGet, \
                          StudyRootQueryRetrieveInformationModelGet, \
-                         PatientStudyOnlyQueryRetrieveInformationModelGet, \
-			 CompositeInstanceRetrieveWithoutBulkDataGet
+                         PatientStudyOnlyQueryRetrieveInformationModelGet
 from pynetdicom3.pdu_primitives import UserIdentityNegotiation, \
                                    SOPClassExtendedNegotiation, \
                                    SOPClassCommonExtendedNegotiation, \
@@ -1250,9 +1249,7 @@ class Association(threading.Thread):
         elif query_model == "O":
             # Retired
             sop_class = PatientStudyOnlyQueryRetrieveInformationModelGet()
-        elif query_model == "B":
-	    sop_class = CompositeInstanceRetrieveWithoutBulkDataGet()
-	else:
+        else:
             raise ValueError("Association.send_c_get() query_model "
                              "must be one of ['P'|'S'|'O']")
 
